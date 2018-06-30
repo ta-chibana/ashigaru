@@ -1,0 +1,10 @@
+{
+  "name": "ashigaru",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ta-chibana <tachibana.gmc@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^1.5.0"
+  }
+}
