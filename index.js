@@ -1,8 +1,7 @@
+#! /usr/bin/env /usr/local/bin/node
 const puppeteer = require('puppeteer');
 
-const BASE_URL = 'http://bento-shogun.jp/menu';
-// const TODAY_MENU_URL = `${BASE_URL}/today/`;
-const WEEK_MENU_URL = `${BASE_URL}/week/`;
+const WEEK_MENU_URL = 'http://bento-shogun.jp/menu/week/';
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -20,7 +19,11 @@ const WEEK_MENU_URL = `${BASE_URL}/week/`;
     ));
   });
 
-  console.log(imageUrls);
-
   await browser.close();
+
+  console.log('🍤');
+  console.log('---');
+  for (let url of imageUrls) {
+    console.log(url);
+  }
 })();
