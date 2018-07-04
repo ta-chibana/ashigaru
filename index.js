@@ -1,5 +1,6 @@
 #! /usr/bin/env /usr/local/bin/node
 const puppeteer = require('puppeteer');
+const fetch = require('node-fetch');
 
 const MENU_URL = 'http://bento-shogun.jp/menu/today/';
 
@@ -26,13 +27,19 @@ const MENU_URL = 'http://bento-shogun.jp/menu/today/';
 
   await browser.close();
 
+  const fetchImage = async url => {
+    const response = await fetch(url);
+    const image = await response.buffer();
+    return Buffer.from(image).toString('base64');
+  }
+
   console.log('🍤');
   console.log('---');
+
   for (let item of items) {
-    const encodedUrl = Buffer
-      .from(item.imageUrl, 'utf8')
-      .toString('base64');
-    console.log(`${item.name}|image=${encodedUrl}`);
+    const image = await fetchImage(item.imageUrl);
+    console.log(item.name);
+    console.log(`| image=${image}`);
     console.log('---');
   }
 })();
