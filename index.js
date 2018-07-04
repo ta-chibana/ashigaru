@@ -5,7 +5,7 @@ const Jimp = require('jimp');
 const MENU_URL = 'http://bento-shogun.jp/menu/today/';
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   await page.goto(MENU_URL, {
