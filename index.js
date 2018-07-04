@@ -1,6 +1,6 @@
 #! /usr/bin/env /usr/local/bin/node
 const puppeteer = require('puppeteer');
-const fetch = require('node-fetch');
+const Jimp = require('jimp');
 
 const MENU_URL = 'http://bento-shogun.jp/menu/today/';
 
@@ -28,9 +28,11 @@ const MENU_URL = 'http://bento-shogun.jp/menu/today/';
   await browser.close();
 
   const fetchImage = async url => {
-    const response = await fetch(url);
-    const image = await response.buffer();
-    return Buffer.from(image).toString('base64');
+    const image = await Jimp.read(url);
+    return await image.resize(260, 184)
+      .getBuffer(Jimp.MIME_JPEG, (_, buffer) => (
+        encodedImage = Buffer.from(buffer).toString('base64')
+      ));
   }
 
   console.log('🍱');

@@ -5,7 +5,7 @@
   "author": "ta-chibana <tachibana.gmc@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "node-fetch": "^2.1.2",
+    "jimp": "^0.2.28",
     "puppeteer": "^1.5.0"
   }
 }
