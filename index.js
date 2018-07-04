@@ -33,13 +33,12 @@ const MENU_URL = 'http://bento-shogun.jp/menu/today/';
     return Buffer.from(image).toString('base64');
   }
 
-  console.log('🍤');
+  console.log('🍱');
   console.log('---');
 
   for (let item of items) {
     const image = await fetchImage(item.imageUrl);
     console.log(item.name);
-    console.log(`| image=${image}`);
-    console.log('---');
+    console.log(`--| image=${image}`);
   }
 })();
