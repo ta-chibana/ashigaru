@@ -29,7 +29,7 @@ const MENU_URL = 'http://bento-shogun.jp/menu/today/';
 
   const fetchImage = async url => {
     const image = await Jimp.read(url);
-    return await image.resize(260, 184)
+    return await image.resize(390, 300)
       .getBuffer(Jimp.MIME_JPEG, (_, buffer) => (
         encodedImage = Buffer.from(buffer).toString('base64')
       ));
